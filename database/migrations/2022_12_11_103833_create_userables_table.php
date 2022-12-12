@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('userables', function (Blueprint $table) {
+            $table->id();
             $table->enum('number_star', [1, 2, 3, 4, 5]);
             $table->unsignedBigInteger('userable_id');
             $table->string('userable_type');
