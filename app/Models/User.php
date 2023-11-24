@@ -42,4 +42,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the notes that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function notes(): BelongsTo
+    {
+        return $this->belongsTo(Note::class);
+    }
+
+    public function authors(){
+        return $this->morphedByMany(Author::class, 'userable');
+    }
+
+    public function books(){
+        return $this->morphedByMany(Book::class, 'userable');
+    }
 }
